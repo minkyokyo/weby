@@ -1,0 +1,9 @@
+happy,1234,102,f
+mk,ohohoh,340,f
+applewatch,1234,160,f
+cola,1234,0,f
+kty4119,1234,500,f
+cookie,alsry1,0,f
+farm13,farm13,201,f
+gayoyo,1111,0,f
+end,0,0,0,f

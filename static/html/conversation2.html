@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <title>웨비</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+      let count = 0;
+      function hello() {
+        $.ajax({
+          url: "/label/text2-1.html",
+          dataType: "html",
+          success: function (data) {
+            $("#answer").html(data);
+          },
+        });
+        count = count + 1;
+        let btn = document.getElementById("hellobtn");
+        btn.disabled = true;
+      }
+      function joke() {
+        $.ajax({
+          url: "/label/text2-2.html",
+          dataType: "html",
+          success: function (data) {
+            $("#answer").html(data);
+          },
+        });
+        count = count + 1;
+        let btn = document.getElementById("jokebtn");
+        btn.disabled = true;
+      }
+      function question() {
+        $.ajax({
+          url: "/label/text2-3.html",
+          dataType: "html",
+          success: function (data) {
+            $("#answer").html(data);
+          },
+        });
+        count = count + 1;
+        let btn = document.getElementById("questionbtn");
+        btn.disabled = true;
+      }
+      function check(f) {
+        if (count == 3) {
+          f.submit();
+        } else {
+          location.href = "/main";
+        }
+      }
+    </script>
+    <style>
+      #face {
+        width: 500px;
+        margin-top: 100px;
+        margin-left: 500px;
+      }
+      #answer {
+        width: 500px;
+        height: 100px;
+        margin: 100px auto;
+        border: 10px;
+        border-style: ridge;
+        border-color: red green purple blue;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row" id="face">
+        <h1 style="font-size: 150px">^__^</h1>
+      </div>
+      <div class="row">
+        <div id="answer">"..."</div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button id="hellobtn" class="btn btn-primary" onClick="hello()">
+            반갑다
+          </button>
+        </div>
+        <div class="col">
+          <button id="jokebtn" class="btn btn-primary" onClick="joke()">
+            메롱
+          </button>
+        </div>
+        <div class="col">
+          <button id="questionbtn" class="btn btn-primary" onClick="question()">
+            뭐하니?
+          </button>
+        </div>
+        <div class="col">
+          <form action="/conversation" method="post">
+            <input
+              type="button"
+              value="대화 마치기"
+              class="btn btn-primary"
+              onclick="check(this.form)"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
